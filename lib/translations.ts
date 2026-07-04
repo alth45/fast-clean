@@ -4,12 +4,12 @@ export const translations = {
   id: {
     nav: {
       about: "Tentang FastCleaning",
-      solutions: "Solusi",
-      solutionsChildren: {
-        office: "Kantor",
-        building: "Gedung",
-        garden: "Taman",
-      },
+      // solutions: "Solusi",
+      // solutionsChildren: {
+      //   office: "Kantor",
+      //   building: "Gedung",
+      //   garden: "Taman",
+      // },
       gallery: "Gallery",
       faq: "FAQ",
       language: "Bahasa Inggris",
@@ -18,6 +18,7 @@ export const translations = {
         indonesia: "Indonesia",
       },
       contact: "Kontak Kami",
+      problem: "Masalah"
     },
     hero: {
       title: "Solusi Kebersihan",

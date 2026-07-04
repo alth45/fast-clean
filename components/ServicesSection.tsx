@@ -61,50 +61,61 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="bg-white py-20">
+    <section id="layanan" className="relative bg-white py-24 sm:py-32">
+      {/* Aksen background samar agar tidak terlalu plain putih */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white"></div>
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
             Layanan Kami
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+          {/* Garis aksen estetis */}
+          <div className="mt-4 flex justify-center">
+            <div className="h-1.5 w-16 rounded-full bg-blue-600"></div>
+          </div>
+          <p className="mt-6 text-lg leading-relaxed text-gray-600">
             Berbagai layanan kebersihan profesional yang siap membantu Anda
             menciptakan lingkungan yang bersih, sehat, dan nyaman.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <div
               key={service.slug}
-              className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-all hover:shadow-lg"
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
               {/* Gambar */}
-              <div className="relative h-48 w-full overflow-hidden">
+              <div className="relative h-56 w-full overflow-hidden">
                 <Image
                   src={service.image}
                   alt={service.alt}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-30" />
               </div>
 
               {/* Konten */}
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-semibold text-gray-900">
+              <div className="flex flex-1 flex-col p-8">
+                <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">
                   {service.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600">
+                <p className="flex-1 text-base leading-relaxed text-gray-600">
                   {service.description}
                 </p>
+                
+                {/* Garis pemisah halus sebelum tombol */}
+                <div className="my-6 border-b border-gray-100"></div>
+
                 <Link
                   href={`/pesan/${service.slug}`}
-                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                  className="group/btn flex w-full items-center justify-between rounded-xl bg-blue-50 px-6 py-3.5 text-sm font-semibold text-blue-700 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:shadow-md"
                 >
                   Pesan Sekarang
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover/btn:translate-x-1.5" />
                 </Link>
               </div>
             </div>

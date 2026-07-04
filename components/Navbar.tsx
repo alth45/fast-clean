@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Phone, ChevronDown, Globe, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -12,29 +12,45 @@ const Navbar = () => {
   const { language, setLanguage } = useLanguage();
   const t = (path: string) => getTranslation(language, path);
 
+  const scrollToSection = useCallback((id: string) => {
+    setMobileOpen(false);
+    setOpenDropdown(null);
+    requestAnimationFrame(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  }, []);
+
   const changeLanguage = (lang: Language) => {
     setLanguage(lang);
     setOpenDropdown(null);
     setMobileOpen(false);
   };
 
-  type NavItem = {
+    type NavItem = {
     key: string;
     href?: string;
+    onClick?: () => void;
     children?: { key: string; href: string; onClick?: () => void }[];
   };
 
   const navItems: NavItem[] = [
-    { key: "nav.about", href: "/tentang" },
-    { key: "nav.faq", href: "/faq" },
-    {
-      key: "nav.solutions",
-      children: [
-        { key: "nav.solutionsChildren.office", href: "/solusi/kantor" },
-        { key: "nav.solutionsChildren.building", href: "/solusi/gedung" },
-        { key: "nav.solutionsChildren.garden", href: "/solusi/taman" },
-      ],
-    },
+    { key: "nav.about", onClick: () => scrollToSection("tentang") },
+    { key: "nav.faq", onClick: () => scrollToSection("faq") },
+    // {
+    //   key: "nav.solutions",
+    //   children: [
+    //     { key: "nav.solutionsChildren.office", href: "/solusi/kantor" },
+    //     { key: "nav.solutionsChildren.building", href: "/solusi/gedung" },
+    //     { key: "nav.solutionsChildren.garden", href: "/solusi/taman" },
+    //   ],
+    // },
+    { key: "nav.problem", onClick: () => scrollToSection("masalah") },
     { key: "nav.gallery", href: "/gallery" },
     {
       key: "nav.language",
@@ -62,8 +78,13 @@ const Navbar = () => {
       {children?.map((child) => (
         <Link
           key={child.key}
-          href={child.href}
-          onClick={child.onClick}
+                    href={child.href || "#"}
+          onClick={(e) => {
+            if (child.onClick) {
+              e.preventDefault();
+              child.onClick();
+            }
+          }}
           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
         >
           {t(child.key)}
@@ -104,6 +125,13 @@ const Navbar = () => {
                       {renderDropdownContent(item.children)}
                     </div>
                   </>
+                                ) : item.onClick ? (
+                  <button
+                    onClick={item.onClick}
+                    className="inline-block px-2 py-1 text-gray-700 hover:text-blue-600 transition-colors"
+                  >
+                    {t(item.key)}
+                  </button>
                 ) : (
                   <Link
                     href={item.href ?? "#"}
@@ -169,8 +197,13 @@ const Navbar = () => {
                       {item.children.map((child) => (
                         <Link
                           key={child.key}
-                          href={child.href}
-                          onClick={child.onClick}
+                          href={child.href || "#"}
+                          onClick={(e) => {
+                            if (child.onClick) {
+                              e.preventDefault();
+                              child.onClick();
+                            }
+                          }}
                           className="block py-1 text-sm text-gray-600 hover:text-blue-600"
                         >
                           {t(child.key)}
@@ -179,6 +212,16 @@ const Navbar = () => {
                     </div>
                   )}
                 </>
+                            ) : item.onClick ? (
+                <button
+                  onClick={() => {
+                    item.onClick?.();
+                    setMobileOpen(false);
+                  }}
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-600"
+                >
+                  {t(item.key)}
+                </button>
               ) : (
                 <Link
                   href={item.href ?? "#"}

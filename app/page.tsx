@@ -2,6 +2,7 @@
 import ProblemsSection from "@/components/ProblemsSection";
 import ServicesSection from "@/components/ServicesSection";
 import WhyUsSection from "@/components/WhyUsSection";
+import StepsSection from "@/components/StepsSection";
 import FaqSection from "@/components/FaqSection";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <WhyUsSection />
       <ProblemsSection />
       <ServicesSection />
+      <StepsSection />
       <FaqSection />
     </>
   );
