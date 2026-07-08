@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { LanguageProvider } from "@/lib/LanguageContext";
+import { ThemeProvider } from "@/lib/ThemeContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,14 +31,37 @@ export default function RootLayout({
   return (
     <html
       lang="id"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <LanguageProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </LanguageProvider>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('fastclean-theme');
+                  if (!theme) {
+                    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  }
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-background text-foreground transition-colors duration-300">
+        <ThemeProvider>
+          <LanguageProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

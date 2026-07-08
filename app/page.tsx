@@ -4,6 +4,7 @@ import ServicesSection from "@/components/ServicesSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import StepsSection from "@/components/StepsSection";
 import FaqSection from "@/components/FaqSection";
+import CommitmentBanner from "@/components/CommitmentBanner";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <ServicesSection />
       <StepsSection />
       <FaqSection />
+      <CommitmentBanner />
     </>
   );
 }

@@ -96,12 +96,12 @@ const StepsSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-white py-20 sm:py-28">
+    <section ref={sectionRef} className="relative overflow-hidden bg-white dark:bg-gray-900 py-20 sm:py-28">
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -left-40 -top-40 h-80 w-80 rounded-full bg-blue-50/50 blur-3xl" />
-        <div className="absolute -right-40 bottom-0 h-80 w-80 rounded-full bg-emerald-50/30 blur-3xl" />
-        <div className="absolute left-1/2 top-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-50/20 blur-3xl" />
+        <div className="absolute -left-40 -top-40 h-80 w-80 rounded-full bg-blue-50/50 dark:bg-blue-900/20 blur-3xl" />
+        <div className="absolute -right-40 bottom-0 h-80 w-80 rounded-full bg-emerald-50/30 dark:bg-emerald-900/20 blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-50/20 dark:bg-violet-900/20 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

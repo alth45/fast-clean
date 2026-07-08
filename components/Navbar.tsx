@@ -85,7 +85,7 @@ const Navbar = () => {
               child.onClick();
             }
           }}
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           {t(child.key)}
         </Link>
@@ -94,13 +94,13 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md">
+    <nav className="sticky top-0 z-50 bg-white dark:bg-gray-900 dark:border-b dark:border-gray-700 shadow-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
-            className="flex-shrink-0 text-xl font-bold text-gray-800"
+            className="flex-shrink-0 text-xl font-bold text-gray-800 dark:text-white"
           >
             FastCleaning
           </Link>
@@ -113,7 +113,7 @@ const Navbar = () => {
                   <>
                     <button
                       onClick={() => toggleDropdown(item.key)}
-                      className="flex items-center gap-1 px-2 py-1 text-gray-700 hover:text-blue-600 transition-colors"
+                      className="flex items-center gap-1 px-2 py-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
                       {item.key === "nav.language" && (
                         <Globe className="h-4 w-4" />
@@ -121,21 +121,21 @@ const Navbar = () => {
                       {t(item.key)}
                       <ChevronDown className="h-4 w-4" />
                     </button>
-                    <div className="absolute left-0 mt-2 w-44 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                    <div className="absolute left-0 mt-2 w-44 origin-top-left rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black/5 focus:outline-none opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
                       {renderDropdownContent(item.children)}
                     </div>
                   </>
                                 ) : item.onClick ? (
                   <button
                     onClick={item.onClick}
-                    className="inline-block px-2 py-1 text-gray-700 hover:text-blue-600 transition-colors"
+                    className="inline-block px-2 py-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {t(item.key)}
                   </button>
                 ) : (
                   <Link
                     href={item.href ?? "#"}
-                    className="inline-block px-2 py-1 text-gray-700 hover:text-blue-600 transition-colors"
+                    className="inline-block px-2 py-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     {t(item.key)}
                   </Link>
@@ -157,7 +157,7 @@ const Navbar = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-gray-700 hover:text-blue-600"
+              className="p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >
               {mobileOpen ? (
                 <X className="h-6 w-6" />
@@ -171,14 +171,14 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white px-4 pb-4 pt-2 space-y-2">
+        <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 pb-4 pt-2 space-y-2">
           {navItems.map((item) => (
             <div key={item.key}>
               {item.children ? (
                 <>
                   <button
                     onClick={() => toggleDropdown(item.key)}
-                    className="flex w-full items-center justify-between py-2 text-gray-700 hover:text-blue-600"
+                    className="flex w-full items-center justify-between py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                   >
                     <span className="flex items-center gap-2">
                       {item.key === "nav.language" && (
@@ -204,7 +204,7 @@ const Navbar = () => {
                               child.onClick();
                             }
                           }}
-                          className="block py-1 text-sm text-gray-600 hover:text-blue-600"
+                          className="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
                         >
                           {t(child.key)}
                         </Link>
@@ -218,14 +218,14 @@ const Navbar = () => {
                     item.onClick?.();
                     setMobileOpen(false);
                   }}
-                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-600"
+                  className="block w-full text-left py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                 >
                   {t(item.key)}
                 </button>
               ) : (
                 <Link
                   href={item.href ?? "#"}
-                  className="block py-2 text-gray-700 hover:text-blue-600"
+                  className="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                   onClick={() => setMobileOpen(false)}
                 >
                   {t(item.key)}

@@ -3,12 +3,12 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-gray-300 dark:text-gray-400">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Logo & Deskripsi */}
           <div>
-            <h3 className="text-xl font-bold text-white">FastCleaning</h3>
+            <h3 className="text-xl font-bold text-white dark:text-white">FastCleaning</h3>
             <p className="mt-3 text-sm leading-relaxed">
               Solusi kebersihan profesional untuk rumah, kantor, dan taman
               Anda. Tim berpengalaman siap membantu menciptakan lingkungan
@@ -18,20 +18,20 @@ const Footer = () => {
 
           {/* Navigasi Cepat */}
           <div>
-            <h4 className="font-semibold text-white">Navigasi</h4>
+            <h4 className="font-semibold text-white dark:text-white">Navigasi</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/tentang" className="transition-colors hover:text-white">
+                <Link href="/tentang" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   Tentang FastCleaning
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="transition-colors hover:text-white">
+                <Link href="/gallery" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/kontak" className="transition-colors hover:text-white">
+                <Link href="/kontak" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   Kontak Kami
                 </Link>
               </li>
@@ -40,25 +40,25 @@ const Footer = () => {
 
           {/* Layanan */}
           <div>
-            <h4 className="font-semibold text-white">Layanan</h4>
+            <h4 className="font-semibold text-white dark:text-white">Layanan</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/pesan/deep-clean" className="transition-colors hover:text-white">
+                <Link href="/pesan/deep-clean" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   Deep Clean
                 </Link>
               </li>
               <li>
-                <Link href="/pesan/pasca-renovasi" className="transition-colors hover:text-white">
+                <Link href="/pesan/pasca-renovasi" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   Pembersihan Pasca Renovasi
                 </Link>
               </li>
               <li>
-                <Link href="/pesan/kontrak" className="transition-colors hover:text-white">
+                <Link href="/pesan/kontrak" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   Kontrak Bulanan
                 </Link>
               </li>
               <li>
-                <Link href="/pesan/laundry-karpet" className="transition-colors hover:text-white">
+                <Link href="/pesan/laundry-karpet" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   Laundry Karpet & Sofa
                 </Link>
               </li>
@@ -67,7 +67,7 @@ const Footer = () => {
 
           {/* Kontak */}
           <div>
-            <h4 className="font-semibold text-white">Kontak</h4>
+            <h4 className="font-semibold text-white dark:text-white">Kontak</h4>
             <ul className="mt-4 space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
@@ -75,13 +75,13 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 shrink-0" />
-                <a href="tel:+628123456789" className="transition-colors hover:text-white">
+                <a href="tel:+628123456789" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   +62 812-3456-789
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0" />
-                <a href="mailto:info@fastcleaning.id" className="transition-colors hover:text-white">
+                <a href="mailto:info@fastcleaning.id" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   info@fastcleaning.id
                 </a>
               </li>
@@ -91,7 +91,7 @@ const Footer = () => {
             <div className="mt-6 flex gap-4">
               <a
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-blue-600"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 dark:bg-gray-800 transition-colors hover:bg-blue-600"
                 aria-label="Facebook"
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -100,7 +100,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-pink-600"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 dark:bg-gray-800 transition-colors hover:bg-pink-600"
                 aria-label="Instagram"
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -111,7 +111,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-blue-500"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-800 dark:bg-gray-800 transition-colors hover:bg-blue-500"
                 aria-label="Twitter"
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -123,7 +123,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-10 border-t border-gray-800 pt-6 text-center text-sm">
+        <div className="mt-10 border-t border-gray-800 dark:border-gray-800 pt-6 text-center text-sm">
           <p>&copy; {new Date().getFullYear()} FastCleaning. All rights reserved.</p>
         </div>
       </div>

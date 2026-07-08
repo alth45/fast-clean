@@ -61,20 +61,20 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="layanan" className="relative bg-white py-24 sm:py-32">
+    <section id="layanan" className="relative bg-white dark:bg-gray-900 py-24 sm:py-32">
       {/* Aksen background samar agar tidak terlalu plain putih */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white"></div>
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50/50 dark:from-blue-900/20 via-white dark:via-gray-900 to-white dark:to-gray-900"></div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl md:text-5xl">
             Layanan Kami
           </h2>
           {/* Garis aksen estetis */}
           <div className="mt-4 flex justify-center">
             <div className="h-1.5 w-16 rounded-full bg-blue-600"></div>
           </div>
-          <p className="mt-6 text-lg leading-relaxed text-gray-600">
+          <p className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400">
             Berbagai layanan kebersihan profesional yang siap membantu Anda
             menciptakan lingkungan yang bersih, sehat, dan nyaman.
           </p>
@@ -84,7 +84,7 @@ const ServicesSection = () => {
           {services.map((service) => (
             <div
               key={service.slug}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-gray-900/50"
             >
               {/* Gambar */}
               <div className="relative h-56 w-full overflow-hidden">
@@ -100,15 +100,15 @@ const ServicesSection = () => {
 
               {/* Konten */}
               <div className="flex flex-1 flex-col p-8">
-                <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">
+                <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   {service.title}
                 </h3>
-                <p className="flex-1 text-base leading-relaxed text-gray-600">
+                <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                   {service.description}
                 </p>
                 
                 {/* Garis pemisah halus sebelum tombol */}
-                <div className="my-6 border-b border-gray-100"></div>
+                <div className="my-6 border-b border-gray-100 dark:border-gray-700"></div>
 
                 <Link
                   href={`/pesan/${service.slug}`}
