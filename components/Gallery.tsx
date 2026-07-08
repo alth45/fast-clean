@@ -8,13 +8,20 @@ import { motion, AnimatePresence } from "framer-motion";
 const IMAGE_COUNT = 90;
 const BATCH_SIZE = 10;
 const SHUFFLE_INTERVAL = 6000; // ms
-const COLUMN_BREAKPOINTS = {
-  sm: 1,  // < 640px
-  md: 2,  // 640px - 1023px
-  lg: 3,  // 1024px - 1279px
-  xl: 4,  // 1280px - 1535px
-  "2xl": 5, // >= 1536px
-};
+
+// ============================================================
+// CDN CONFIGURATION
+// ============================================================
+// Set NEXT_PUBLIC_CDN_URL di .env.local untuk menggunakan CDN.
+// Contoh:
+//   NEXT_PUBLIC_CDN_URL=https://cdn.example.com
+// Maka gambar akan di-load dari:
+//   https://cdn.example.com/gallery/1.jpg
+// Jika tidak diset, fallback ke folder lokal /public/image/
+// ============================================================
+const CDN_BASE = (typeof process !== "undefined" && process.env.NEXT_PUBLIC_CDN_URL)
+  ? process.env.NEXT_PUBLIC_CDN_URL.replace(/\/+$/, "")
+  : "";
 
 type GalleryImage = {
   id: number;
@@ -22,6 +29,13 @@ type GalleryImage = {
   alt: string;
   aspectRatio: number; // width / height
 };
+
+function getImageSrc(id: number): string {
+  if (CDN_BASE) {
+    return `${CDN_BASE}/gallery/${id}.jpg`;
+  }
+  return `/image/${id}.jpg`;
+}
 
 // Generate placeholder aspect ratios based on image id
 // In production, you'd get these from the actual image dimensions
@@ -38,7 +52,7 @@ function getAspectRatio(id: number): number {
 function generateImages(): GalleryImage[] {
   return Array.from({ length: IMAGE_COUNT }, (_, i) => ({
     id: i + 1,
-    src: `/image/${i + 1}.jpg`,
+    src: getImageSrc(i + 1),
     alt: `Gallery image ${i + 1}`,
     aspectRatio: getAspectRatio(i),
   }));
@@ -62,7 +76,6 @@ export default function Gallery() {
   const [loadedCount, setLoadedCount] = useState(0);
   const [imagesReady, setImagesReady] = useState(false);
   const loaderRef = useRef<HTMLDivElement>(null);
-  const prevBatchRef = useRef(currentBatch);
 
   // Load images in batches
   useEffect(() => {
