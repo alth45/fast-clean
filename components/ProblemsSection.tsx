@@ -43,13 +43,13 @@ const problems = [
 
 const ProblemsSection = () => {
   return (
-    <section id="masalah" className="bg-gray-50 py-20">
+    <section id="masalah" className="bg-gray-50 dark:bg-gray-900/30 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Masalah yang Sering Terjadi
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
             Apakah Anda mengalami salah satu dari masalah ini? FastCleaning hadir
             sebagai solusi kebersihan profesional untuk Anda.
           </p>
@@ -59,15 +59,15 @@ const ProblemsSection = () => {
           {problems.map((problem) => (
             <div
               key={problem.title}
-              className="group relative rounded-2xl bg-white p-6 shadow-md transition-all hover:shadow-lg"
+              className="group relative rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-md dark:shadow-gray-900/30 transition-all hover:shadow-lg dark:border dark:border-gray-700"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 transition-colors group-hover:bg-blue-600 dark:group-hover:bg-blue-500 group-hover:text-white">
                 <problem.icon className="h-6 w-6" />
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-gray-900">
+              <h3 className="mt-4 text-lg font-semibold text-gray-900 dark:text-white">
                 {problem.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-gray-600">
+              <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                 {problem.description}
               </p>
             </div>
