@@ -21,7 +21,7 @@ const Footer = () => {
             <h4 className="font-semibold text-white dark:text-white">Navigasi</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/tentang" className="transition-colors hover:text-white dark:hover:text-gray-200">
+                <Link href="/#tentang" className="transition-colors hover:text-white dark:hover:text-gray-200">
                   Tentang FastCleaning
                 </Link>
               </li>
